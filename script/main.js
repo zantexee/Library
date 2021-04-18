@@ -106,11 +106,34 @@ function displayNewForm() {
 
   readDiv.appendChild(readInput);
 
+  const submitButton = document.createElement('button');
+  submitButton.textContent = 'ADD BOOK';
+  submitButton.type = 'submit';
+
   //  Add everything to the form element
   formElement.appendChild(titleInput);
   formElement.appendChild(authorInput);
   formElement.appendChild(pagesInput);
   formElement.appendChild(readDiv);
+  formElement.appendChild(submitButton);
+
+  formElement.addEventListener('submit', (e) => {
+    console.log(e);
+    console.log(e.target[0].value);
+
+    const book = new Book(
+      e.target[0].value,
+      e.target[1].value,
+      e.target[2].value,
+      e.target[3].checked,
+    );
+
+    addBookToLibrary(book);
+    displayBook(book);
+    displayNewForm();
+
+    e.preventDefault();
+  });
 
   // Add the form element to the container
   container.appendChild(formElement);

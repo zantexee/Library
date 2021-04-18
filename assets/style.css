@@ -9,12 +9,14 @@ body {
   width: 100vw;
   flex-flow: column;
   align-items: center;
+  justify-content: center;
 }
 
 .book {
   width: 200px;
   height: 200px;
   border: 2px solid black;
+  padding: 30px 30px;
 }
 
 .form form {
@@ -23,7 +25,11 @@ body {
 }
 
 #book-container {
-  width: 1000px;
+  width: 60%;
+  height: 80%;
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-between;
+  background: #57c4ff;
+  overflow: auto;
 }

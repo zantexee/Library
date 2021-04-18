@@ -23,10 +23,14 @@ function addBookToLibrary(book) {
   myLibrary.push(book);
 }
 
-function removeBook(index) {
+function removeBook(book) {
   const container = document.getElementById('book-container');
+  const index = book.dataset.index;
 
-  container.removeChild(container.childNodes[index]);
+  const element = document.querySelector(`[data-index~="${index}"]`);
+  element.remove();
+
+  myLibrary.splice(index, 1);
 }
 
 function displayBook(book) {
@@ -36,7 +40,7 @@ function displayBook(book) {
 
   const bookDiv = document.createElement('div');
   bookDiv.classList = 'book';
-  bookDiv.dataset.index = container.children.length - 1;
+  bookDiv.dataset.index = container.children.length;
 
   // Create title and author element
   const titleElement = document.createElement('h1');
@@ -51,7 +55,7 @@ function displayBook(book) {
   // Create the remove button element
   const removeButton = document.createElement('button');
   removeButton.textContent = 'Remove Book';
-  removeButton.addEventListener('click', () => removeBook(container.children.length - 1));
+  removeButton.addEventListener('click', () => removeBook(bookDiv));
 
   const readButton = document.createElement('button');
   readButton.textContent = 'Read';
@@ -64,6 +68,8 @@ function displayBook(book) {
 
   // Add the new book element to the container
   container.appendChild(bookDiv);
+
+  console.log(bookDiv.dataset.index);
 }
 
 function displayNewForm() {
@@ -113,6 +119,9 @@ function displayNewForm() {
 
 const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
 addBookToLibrary(theHobbit);
+
+const meow = new Book('The meowry', 'J.R.R. Meowr', 245, false);
+addBookToLibrary(meow);
 
 (function initialDisplay(booksArr) {
   booksArr.forEach((book) => displayBook(book));

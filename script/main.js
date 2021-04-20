@@ -1,6 +1,10 @@
-let myLibrary = [];
+let myLibrary = JSON.parse(localStorage.getItem('books')) || [];
 
 let formIsDisplaying = false;
+
+function saveToLocal() {
+  localStorage.setItem('books', JSON.stringify(myLibrary));
+}
 
 function Book(title, author, numberOfPages, hasRead) {
   this.title = title;
@@ -16,6 +20,7 @@ Book.prototype.info = function () {
 };
 
 Book.prototype.markRead = function () {
+  saveToLocal();
   return (this.read = !this.read);
 };
 
@@ -31,6 +36,7 @@ function removeBook(book) {
   element.remove();
 
   myLibrary.splice(index, 1);
+  saveToLocal();
 }
 
 function displayBook(book) {
@@ -78,7 +84,7 @@ function displayBook(book) {
   // Add the new book element to the container
   container.appendChild(bookDiv);
 
-  console.log(bookDiv.dataset.index);
+  saveToLocal();
 }
 
 function displayNewForm() {
@@ -151,11 +157,11 @@ function displayNewForm() {
   formIsDisplaying = true;
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
-addBookToLibrary(theHobbit);
+// const theHobbit = new Book('The Hobbit', 'J.R.R. Tolkien', 295, false);
+// addBookToLibrary(theHobbit);
 
-const meow = new Book('The meowry', 'J.R.R. Meowr', 245, false);
-addBookToLibrary(meow);
+// const meow = new Book('The meowry', 'J.R.R. Meowr', 245, false);
+// addBookToLibrary(meow);
 
 (function initialDisplay(booksArr) {
   booksArr.forEach((book) => displayBook(book));

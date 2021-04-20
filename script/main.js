@@ -122,6 +122,7 @@ function displayNewForm() {
   const submitButton = document.createElement('button');
   submitButton.textContent = 'ADD BOOK';
   submitButton.type = 'submit';
+  submitButton.classList = 'btn';
 
   //  Add everything to the form element
   formElement.appendChild(titleInput);

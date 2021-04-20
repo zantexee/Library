@@ -15,6 +15,18 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.container {
+  display: flex;
+  height: 80%;
+  width: 80%;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid #c79191;
+  padding: 20px 0;
+  box-shadow: 10px 10px 10px #461220;
+}
+
 /* form and sidebar styles */
 
 .form form {
@@ -24,9 +36,10 @@ body {
 
 .form input {
   border: 0;
-  border-bottom: 5px solid red;
+  border-bottom: 5px solid #8c2f39;
   margin: 10px 0;
   height: 40px;
+
   padding: 5px 10px;
 }
 .form input:focus-within {
@@ -34,32 +47,48 @@ body {
 }
 .read-input input {
   margin: auto;
+  width: 1rem;
 }
 
 .sidebar {
-  height: calc(80% + 40px);
-  width: 15%;
-  background: #eee;
+  height: calc(100% + 40px);
+  width: 40%;
+  background: #fcb9b2;
   flex-flow: column nowrap;
+}
+.sidebar .btn {
+  background: transparent;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.sidebar .btn:hover {
+  background: rgba(163, 190, 201, 0.5);
 }
 
 /* book styles */
 .book {
   width: 200px;
   height: 200px;
-  border: 2px solid black;
+  border: 2px solid #461220;
+  border-radius: 30px;
   padding: 30px 30px;
   margin: 10px auto;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 10px 10px #8c2f39;
 }
 
 #book-container {
-  width: 60%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   padding: 20px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  background: #57c4ff;
+  background: #fed0bb;
   overflow: auto;
 }
 
@@ -71,12 +100,31 @@ body {
 }
 /* button styles */
 
+hr {
+  border: 0;
+  width: 100%;
+  border-top: 1px solid #461220;
+}
+
 .btn-div {
-  justify-content: space-between;
+  padding: 20px 10px;
 }
 .btn-div .btn {
+  border: none;
   background: transparent;
+  border-bottom: 3px solid rgba(0, 0, 0.2);
+  cursor: pointer;
+  margin: 0 10px;
+  transition: background 0.1s;
 }
+
+.btn-div .btn:hover {
+  background: rgb(250, 188, 159, 0.5);
+}
+
 .btn {
   height: 40px;
+}
+.btn:focus {
+  outline: none;
 }

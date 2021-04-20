@@ -52,19 +52,28 @@ function displayBook(book) {
   titleElement.appendChild(title);
   authorElement.appendChild(author);
 
+  const hrElem = document.createElement('hr');
+
   // Create the remove button element
   const removeButton = document.createElement('button');
   removeButton.textContent = 'Remove Book';
+  removeButton.classList = 'btn';
   removeButton.addEventListener('click', () => removeBook(bookDiv));
 
   const readButton = document.createElement('button');
   readButton.textContent = 'Read';
+  readButton.classList = 'btn';
   readButton.addEventListener('click', () => book.markRead());
+
+  const buttonDiv = document.createElement('div');
+  buttonDiv.appendChild(removeButton);
+  buttonDiv.appendChild(readButton);
+  buttonDiv.classList = 'btn-div flex ';
 
   bookDiv.appendChild(titleElement);
   bookDiv.appendChild(authorElement);
-  bookDiv.appendChild(removeButton);
-  bookDiv.appendChild(readButton);
+  bookDiv.appendChild(hrElem);
+  bookDiv.appendChild(buttonDiv);
 
   // Add the new book element to the container
   container.appendChild(bookDiv);
@@ -87,14 +96,17 @@ function displayNewForm() {
   const titleInput = document.createElement('input');
   titleInput.type = 'text';
   titleInput.placeholder = 'Title';
+  titleInput.required = true;
 
   const authorInput = document.createElement('input');
   authorInput.type = 'text';
   authorInput.placeholder = 'Author';
+  authorInput.required = true;
 
   const pagesInput = document.createElement('input');
   pagesInput.type = 'number';
   pagesInput.placeholder = 'Pages';
+  pagesInput.required = true;
 
   //  Creates div for checkbox
   const readDiv = document.createElement('div');
@@ -105,6 +117,7 @@ function displayNewForm() {
   readInput.defaultChecked = false;
 
   readDiv.appendChild(readInput);
+  readDiv.classList = 'flex read-input';
 
   const submitButton = document.createElement('button');
   submitButton.textContent = 'ADD BOOK';
@@ -118,9 +131,6 @@ function displayNewForm() {
   formElement.appendChild(submitButton);
 
   formElement.addEventListener('submit', (e) => {
-    console.log(e);
-    console.log(e.target[0].value);
-
     const book = new Book(
       e.target[0].value,
       e.target[1].value,

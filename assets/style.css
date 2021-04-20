@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
 html,
 body {
   margin: 0;
@@ -7,29 +9,74 @@ body {
   display: flex;
   height: 100vh;
   width: 100vw;
-  flex-flow: column;
+  flex-flow: row nowrap;
   align-items: center;
   justify-content: center;
+  font-family: 'Roboto', sans-serif;
 }
 
-.book {
-  width: 200px;
-  height: 200px;
-  border: 2px solid black;
-  padding: 30px 30px;
-}
+/* form and sidebar styles */
 
 .form form {
   display: flex;
   flex-flow: column nowrap;
 }
 
+.form input {
+  border: 0;
+  border-bottom: 5px solid red;
+  margin: 10px 0;
+  height: 40px;
+  padding: 5px 10px;
+}
+.form input:focus-within {
+  outline: 0;
+}
+.read-input input {
+  margin: auto;
+}
+
+.sidebar {
+  height: calc(80% + 40px);
+  width: 15%;
+  background: #eee;
+  flex-flow: column nowrap;
+}
+
+/* book styles */
+.book {
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  padding: 30px 30px;
+  margin: 10px auto;
+}
+
 #book-container {
   width: 60%;
   height: 80%;
+  padding: 20px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   background: #57c4ff;
   overflow: auto;
+}
+
+/* utilities */
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+/* button styles */
+
+.btn-div {
+  justify-content: space-between;
+}
+.btn-div .btn {
+  background: transparent;
+}
+.btn {
+  height: 40px;
 }

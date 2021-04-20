@@ -1,11 +1,4 @@
-let myLibrary = JSON.parse(localStorage.getItem('books')) || [];
-
-let formIsDisplaying = false;
-
-function saveToLocal() {
-  localStorage.setItem('books', JSON.stringify(myLibrary));
-}
-
+//Book class
 function Book(title, author, numberOfPages, hasRead) {
   this.title = title;
   this.author = author;
@@ -23,6 +16,22 @@ Book.prototype.markRead = function () {
   saveToLocal();
   return (this.read = !this.read);
 };
+
+let myLibrary = [];
+
+let formIsDisplaying = false;
+
+function getFromLocal() {
+  const arr = JSON.parse(localStorage.getItem('books'));
+  arr.forEach((book) => {
+    const tempBook = new Book(book.title, book.author, book.pages, book.read);
+    myLibrary.push(tempBook);
+  });
+}
+
+function saveToLocal() {
+  localStorage.setItem('books', JSON.stringify(myLibrary));
+}
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
@@ -67,9 +76,12 @@ function displayBook(book) {
   removeButton.addEventListener('click', () => removeBook(bookDiv));
 
   const readButton = document.createElement('button');
-  readButton.textContent = 'Read';
+  readButton.textContent = book.read ? 'Read' : 'Not Read';
   readButton.classList = 'btn';
-  readButton.addEventListener('click', () => book.markRead());
+  readButton.addEventListener('click', () => {
+    book.markRead();
+    readButton.textContent = book.read ? 'Read' : 'Not Read';
+  });
 
   const buttonDiv = document.createElement('div');
   buttonDiv.appendChild(removeButton);
@@ -162,6 +174,8 @@ function displayNewForm() {
 
 // const meow = new Book('The meowry', 'J.R.R. Meowr', 245, false);
 // addBookToLibrary(meow);
+
+getFromLocal();
 
 (function initialDisplay(booksArr) {
   booksArr.forEach((book) => displayBook(book));

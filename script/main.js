@@ -13,8 +13,8 @@ Book.prototype.info = function () {
 };
 
 Book.prototype.markRead = function () {
-  saveToLocal();
-  return (this.read = !this.read);
+  this.read = !this.read;
+  return saveToLocal();
 };
 
 let myLibrary = [];

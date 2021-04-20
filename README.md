@@ -1,3 +1,9 @@
 # Library project
 
-### Will hopefull get used to using objects.
+### Part of The Odin Project's curriculum.
+
+> - [Live preview](https://zantexee.github.io/Library/)
+
+#### License
+
+This project is licensed under the MIT License.

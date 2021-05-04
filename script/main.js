@@ -1,21 +1,22 @@
 //Book class
-function Book(title, author, numberOfPages, hasRead) {
-  this.title = title;
-  this.author = author;
-  this.pages = numberOfPages;
-  this.read = hasRead;
+class Book {
+  constructor(_title, _author, _numberOfPages, _hasRead) {
+    this.title = _title;
+    this.author = _author;
+    this.pages = _numberOfPages;
+    this.read = _hasRead;
+  }
+
+  info() {
+    return `${this.title} by ${this.author}, ${this.pages} pages, ${
+      this.read ? 'already read' : 'not read yet'
+    }`;
+  }
+  markRead() {
+    this.read = !this.read;
+    return saveToLocal();
+  }
 }
-
-Book.prototype.info = function () {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${
-    this.read ? 'already read' : 'not read yet'
-  }`;
-};
-
-Book.prototype.markRead = function () {
-  this.read = !this.read;
-  return saveToLocal();
-};
 
 let myLibrary = [];
 
